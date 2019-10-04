@@ -104,11 +104,11 @@ axios
     console.log(response);
     const func = gitHubMagic(response.data);
     entryPoint.appendChild(func);
-    return axios.get('https://api.github.com/users/JessicaGCooper/followers');
+    // return axios.get('https://api.github.com/users/JessicaGCooper/followers');
   })
-  .then (response => {
-    console.log(response);
-  })
+  // .then (response => {
+  //   console.log(response);
+  // })
   .catch(error => {
     console.log("The data was not returned", error);
   });
@@ -123,8 +123,15 @@ axios
           user, and adding that card to the DOM.
 */
 
-const followersArray = ['https://github.com/ndacode', 'https://github.com/viewgo'];
-
+const followersArray = ['https://api.github.com/users/brudnak', "https://api.github.com/users/devaneereid", "https://api.github.com/users/ddelfaus", "https://api.github.com/users/mark-halls", "https://api.github.com/users/RaymondTrinh91"]
+  
+for (let i = 0; i < followersArray.length; i++){
+  axios.get(followersArray[i])
+  .then(response => {
+  const followersFunc = gitHubMagic(response.data);
+  entryPoint.appendChild(followersFunc);
+})
+}
 
 /* List of LS Instructors Github username's: 
   tetondan
